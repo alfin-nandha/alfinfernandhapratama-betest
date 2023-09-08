@@ -1,0 +1,22 @@
+{"level":"info","message":"server start on port 3000","ms":"+0ms","timestamp":"2023-09-08T13:10:54.309Z"}
+{"level":"info","message":"server start on port 3000","ms":"+0ms","timestamp":"2023-09-08T13:16:16.779Z"}
+{"level":"info","message":"server start on port 3000","ms":"+0ms","timestamp":"2023-09-08T13:17:20.641Z"}
+{"level":"info","message":"server start on port 3000","ms":"+0ms","timestamp":"2023-09-08T13:17:35.183Z"}
+{"level":"info","message":"server start on port 3000","ms":"+0ms","timestamp":"2023-09-08T13:17:36.618Z"}
+{"level":"info","message":"server start on port 3000","ms":"+0ms","timestamp":"2023-09-08T13:17:50.685Z"}
+{"level":"info","message":"server start on port 3000","ms":"+0ms","timestamp":"2023-09-08T13:17:53.681Z"}
+{"level":"info","message":"server start on port 3000","ms":"+0ms","timestamp":"2023-09-08T13:18:10.886Z"}
+{"level":"info","message":"server start on port 3000","ms":"+0ms","timestamp":"2023-09-08T13:18:13.738Z"}
+{"level":"info","message":"server start on port 3000","ms":"+0ms","timestamp":"2023-09-08T13:18:24.717Z"}
+{"level":"info","message":"server start on port 3000","ms":"+0ms","timestamp":"2023-09-08T13:19:11.751Z"}
+{"level":"info","message":"server start on port 3000","ms":"+0ms","timestamp":"2023-09-08T13:20:17.408Z"}
+{"level":"info","message":{"body":{},"log_id":"f0880c23-669e-47f4-b304-3a65b95c91e4","method":"GET","params":{},"type":"response","url":"/api/health"},"ms":"+0ms","timestamp":"2023-09-08T13:27:17.623Z"}
+{"level":"info","message":{"body":{"data":{"message":"sehat"}},"log_id":"f0880c23-669e-47f4-b304-3a65b95c91e4","type":"response","url":"/api/health"},"ms":"+3ms","timestamp":"2023-09-08T13:27:17.627Z"}
+{"level":"info","message":{"body":{},"log_id":"d21d30ee-8a55-489a-86a5-3898af40f91f","method":"GET","params":{},"type":"response","url":"/api/health"},"ms":"+0ms","timestamp":"2023-09-08T13:28:01.047Z"}
+{"level":"info","message":{"body":{"data":{"message":"sehat"}},"log_id":"d21d30ee-8a55-489a-86a5-3898af40f91f","type":"response","url":"/api/health"},"ms":"+4ms","timestamp":"2023-09-08T13:28:01.051Z"}
+{"level":"info","message":{"body":{},"log_id":"6c7d692d-8a62-48b0-bae5-95858d8cd827","method":"GET","params":{},"type":"response","url":"/api/health"},"ms":"+0ms","timestamp":"2023-09-08T13:35:03.856Z"}
+{"level":"info","message":{"body":{},"log_id":"e1ab562a-bcb3-40c6-b873-ddab4d2f9a32","method":"GET","params":{},"type":"response","url":"/api/health"},"ms":"+0ms","timestamp":"2023-09-08T13:35:46.890Z"}
+{"level":"info","message":{"body":{},"log_id":"f57f4329-e1ba-4d6b-ba06-44a13ef18a76","method":"GET","params":{},"type":"response","url":"/api/health"},"ms":"+0ms","timestamp":"2023-09-08T13:36:53.171Z"}
+{"level":"info","message":{"body":{"errors":"tidak sehat"},"log_id":"f57f4329-e1ba-4d6b-ba06-44a13ef18a76","type":"response","url":"/api/health"},"ms":"+8ms","timestamp":"2023-09-08T13:36:53.179Z"}
+{"level":"info","message":{"body":{},"log_id":"3366f6ab-e059-458b-9219-454b4cc72e99","method":"GET","params":{},"type":"response","url":"/api/health"},"ms":"+0ms","timestamp":"2023-09-08T13:37:22.747Z"}
+{"level":"info","message":{"body":{"data":{"message":"sehat"}},"log_id":"3366f6ab-e059-458b-9219-454b4cc72e99","type":"response","url":"/api/health"},"ms":"+22ms","timestamp":"2023-09-08T13:37:22.769Z"}
