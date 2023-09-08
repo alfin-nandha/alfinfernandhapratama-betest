@@ -20,3 +20,4 @@
 {"level":"info","message":{"body":{"errors":"tidak sehat"},"log_id":"f57f4329-e1ba-4d6b-ba06-44a13ef18a76","type":"response","url":"/api/health"},"ms":"+8ms","timestamp":"2023-09-08T13:36:53.179Z"}
 {"level":"info","message":{"body":{},"log_id":"3366f6ab-e059-458b-9219-454b4cc72e99","method":"GET","params":{},"type":"response","url":"/api/health"},"ms":"+0ms","timestamp":"2023-09-08T13:37:22.747Z"}
 {"level":"info","message":{"body":{"data":{"message":"sehat"}},"log_id":"3366f6ab-e059-458b-9219-454b4cc72e99","type":"response","url":"/api/health"},"ms":"+22ms","timestamp":"2023-09-08T13:37:22.769Z"}
+{"level":"info","message":"server start on port 3000","ms":"+0ms","timestamp":"2023-09-08T15:27:10.548Z"}

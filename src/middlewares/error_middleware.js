@@ -1,4 +1,4 @@
-import { error_response } from "../utils/error"
+import { error_response } from "../utils/error.js"
 
 export const error_middleware = (err, req, res, next) => {
     if (!err) {
