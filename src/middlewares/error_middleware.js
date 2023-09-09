@@ -12,7 +12,7 @@ export const error_middleware = (err, req, res, next) => {
         }).end()
     } else {
         res.status(500).send({
-            errors: 'something went wrong!'
+            errors: `something went wrong! ${err.message}`
         }).end()
     }
 }

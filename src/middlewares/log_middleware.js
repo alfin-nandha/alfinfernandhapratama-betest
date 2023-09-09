@@ -6,11 +6,12 @@ const log_middleware = (req, res, next) => {
     const log_id = get_uuid()
     logger.info({
         log_id: log_id,
-        type: 'response',
-        url: req.path,
+        type: 'request',
+        url: req.originalUrl,
         method: req.method.toUpperCase(),
         params: req.params,
-        body: req.body
+        body: req.body,
+        header: req.headers
     })
 
     const old_send = res.send
@@ -18,7 +19,7 @@ const log_middleware = (req, res, next) => {
         logger.info({
             log_id: log_id,
             type: 'response',
-            url: req.path,
+            url: req.originalUrl,
             status_code: res.status,
             body: body
         })
