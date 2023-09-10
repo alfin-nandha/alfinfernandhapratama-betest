@@ -76,6 +76,9 @@ const get_user = async (req) => {
         if (value != null) {
             const redis_result = await redis_client.get_value(`user_${value}`)
             if (redis_result != null) {
+                // produce user data from mongodb to kafka
+                await kafka_producer.produce(env.KAFKA_TOPIC, redis_result)
+
                 return JSON.parse(redis_result)
             }
         }
