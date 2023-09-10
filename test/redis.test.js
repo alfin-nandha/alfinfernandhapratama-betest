@@ -6,7 +6,7 @@ describe('initial redis', () => {
     //     test_url()
     // })
     it('should connect to redis', async () => {
-
+        test_url()
         await redis_client.set_value_exp('test', 'value_test')
         const result = await redis_client.get_value('test')
 

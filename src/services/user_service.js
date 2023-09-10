@@ -42,7 +42,7 @@ const post_user = async (req) => {
 }
 
 const drop_user = async (req) => {
-    const id = validate(id_user_validation, req.query.id)
+    const id = validate(id_user_validation, req.params.id)
 
     const result = await prisma_client.user.findFirst({
         where: {
@@ -95,7 +95,7 @@ const get_user = async (req) => {
 }
 
 const update_user = async (req) => {
-    const id = validate(id_user_validation, req.query.id)
+    const id = validate(id_user_validation, req.params.id)
     const data = validate(update_user_validation, req.body)
 
     const user = await prisma_client.user.findFirst({

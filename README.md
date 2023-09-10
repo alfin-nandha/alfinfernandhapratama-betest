@@ -6,13 +6,18 @@
 
 Endpoint : POST /api/users
 
+Headers :
+
+- Authorization : token
+
 Request Body :
 
 ```json
 {
-    "username" : "raven",
-    "password" : "rahasia",
-    "name" : "alfin fernandha"
+    "username" : "test",
+    "emailAddress" : "test@mail.com",
+    "accountNumber" : "12345678",
+    "identityNumber" : "12345678"
 }
 ```
 
@@ -21,7 +26,11 @@ Response Body Success :
 ```json
 {
     "data" : {
-        "name" : "alfin fernandha"
+        "id": "64fd505f65c1be26e9cf56b2",
+        "username" : "test",
+        "emailAddress" : "test@mail.com",
+        "accountNumber" : "12345678",
+        "identityNumber" : "12345678"
     }
 }
 ```
@@ -30,8 +39,7 @@ Response Body Error :
 
 ```json
 {
-    "data" : {},
-    "errors" : "username already registered"
+    "errors" : "username invalid"
 }
 ```
 
@@ -43,12 +51,18 @@ Headers :
 
 - Authorization : token
 
+Params :
+
+- id : idUser
+
 Request Body :
 
 ```json
 {
-    "name" : "alfin fernandha", //optional
-    "password" : "rahasia" //optional
+    "username" : "test",
+    "emailAddress" : "test@mail.com",
+    "accountNumber" : "12345678",
+    "identityNumber" : "12345678"
 }
 ```
 

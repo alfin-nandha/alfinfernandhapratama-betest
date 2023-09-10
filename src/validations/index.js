@@ -2,8 +2,8 @@ import { error_response } from "../utils/error.js"
 
 export const validate = (schema, request) => {
     const result = schema.validate(request, {
-        abortEarly: false,
-        allowUnknown: false,
+        abortEarly: true,
+        allowUnknown: true,
     })
 
     if (result.error) {

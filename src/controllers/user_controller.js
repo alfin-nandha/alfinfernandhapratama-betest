@@ -5,7 +5,9 @@ const create_user = async (req, res, next) => {
         const result = await user_service.post_user(req)
 
         res.status(200).send({
-            data: result
+            code: 200,
+            data: result,
+            message: "create data success"
         })
     } catch (error) {
         next(error)
@@ -18,9 +20,9 @@ const delete_user = async (req, res, next) => {
         await user_service.drop_user(req)
 
         res.status(200).send({
-            data: {
-                message: 'delete success'
-            }
+            code: 200,
+            message: 'delete data success'
+
         })
     } catch (error) {
         next(error)
@@ -31,7 +33,9 @@ const get_user = async (req, res, next) => {
     try {
         const result = await user_service.get_user(req)
         res.status(200).send({
-            data: result
+            code: 200,
+            data: result,
+            message: 'get data success'
         })
     } catch (error) {
         next(error)
@@ -43,7 +47,9 @@ const put_user = async (req, res, next) => {
         const result = await user_service.update_user(req)
 
         res.status(200).send({
-            data: result
+            code: 200,
+            data: result,
+            message: 'update data success'
         })
     } catch (error) {
         next(error)

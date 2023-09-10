@@ -1,10 +1,8 @@
 # base image
 FROM node:16.15.1-alpine
 
-RUN apk update && apk add tzdata
-
 # set working directory
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # install and cache app dependencies
 COPY package*.json ./

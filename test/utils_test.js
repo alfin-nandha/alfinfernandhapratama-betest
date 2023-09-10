@@ -10,7 +10,17 @@ const delete_user_test = async () => {
 }
 
 const test_url = () => {
-    console.info(`redis://${redis_config.host}:${redis_config.port}/${redis_config.db}`)
+    const plain = `redis://${redis_config.host}:${redis_config.port}/${redis_config.db}`
+    const safe = `redis://localhost:6380/1`
+
+    console.info(plain)
+    console.info(safe)
+
+    if (plain === safe) {
+        console.info('persis')
+    } else {
+        console.info('not')
+    }
 }
 
 export {

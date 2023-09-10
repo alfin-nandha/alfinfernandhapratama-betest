@@ -1,10 +1,9 @@
 import { createClient } from "redis";
-import { redis_config } from "../utils/config.js";
 import { logger } from "./logging.js";
 
-const redis_client = createClient({
-    url: `redis://localhost:6380/1`,
-
+export const redis_client = createClient({
+    // url: "redis://" + redis_config.host + ":" + redis_config.port + "/" + redis_config.db
+    url: "redis://localhost:6380/1"
 })
 
 const quit = async () => {

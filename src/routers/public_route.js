@@ -1,6 +1,6 @@
 import express from 'express'
 import token_controller from '../controllers/token_controller.js'
-import controllers from '../controllers/index.js'
+import controllers from '../controllers/health_controller.js'
 
 
 export const public_router = express.Router()

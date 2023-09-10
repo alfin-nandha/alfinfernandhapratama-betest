@@ -2,7 +2,6 @@ version: "3.1"
 services:
   db_alfinfernandhapratama_betest:
     build: 
-      context: ./dockerfiles
       dockerfile: mongo.Dockerfile
     restart: always
     environment:
@@ -24,10 +23,9 @@ services:
       - REDIS_PORT=6379
       - REDIS_DATABASES=1
 
-  # ms-alfinfernandhapratamabetest:
-  #   build: 
-  #     context: ./dockerfiles
-  #     dockerfile: app.Dockerfile
-  #   restart: always
-  #   ports:
-  #     - 3000:3000
+  ms-alfinfernandhapratamabetest:
+    build: 
+      dockerfile: app.Dockerfile
+    restart: always
+    ports:
+      - 3000:3000

@@ -8,11 +8,13 @@ export const error_middleware = (err, req, res, next) => {
 
     if (err instanceof error_response) {
         res.status(err.status).send({
-            errors: err.message
+            code: err.status,
+            message: err.message
         }).end()
     } else {
         res.status(500).send({
-            errors: `something went wrong! ${err.message}`
+            code: 500,
+            message: `something went wrong! ${err.message}`
         }).end()
     }
 }
