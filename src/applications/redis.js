@@ -3,7 +3,7 @@ import { redis_config } from "../utils/config.js";
 import { logger } from "./logging.js";
 
 const redis_client = createClient({
-    url: `redis://localhost:6379/1`,
+    url: `redis://localhost:6380/1`,
 
 })
 

@@ -1,7 +1,9 @@
 version: "3.1"
 services:
-  mongo:
-    build: ./mongodb-rs
+  db_alfinfernandhapratama_betest:
+    build: 
+      context: ./dockerfiles
+      dockerfile: mongo.Dockerfile
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
@@ -12,3 +14,20 @@ services:
     ports:
       - 27017:27017
 
+  redis_alfinfernandhapratama_betest:
+    image: redis:latest
+    restart: always
+    ports:
+      - "6380:6379"
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_PORT=6379
+      - REDIS_DATABASES=1
+
+  # ms-alfinfernandhapratamabetest:
+  #   build: 
+  #     context: ./dockerfiles
+  #     dockerfile: app.Dockerfile
+  #   restart: always
+  #   ports:
+  #     - 3000:3000
