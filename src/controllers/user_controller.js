@@ -56,9 +56,24 @@ const put_user = async (req, res, next) => {
     }
 }
 
+const create_kafka_user = async (req, res, next) => {
+    try {
+        const result = await user_service.post_kafka_user(req)
+
+        res.status(200).send({
+            code: 200,
+            data: result,
+            message: "kafka user producer success"
+        })
+    } catch (error) {
+        next(error)
+    }
+}
+
 export default {
     create_user,
     delete_user,
     get_user,
-    put_user
+    put_user,
+    create_kafka_user
 }

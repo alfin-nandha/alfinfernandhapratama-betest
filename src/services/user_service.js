@@ -1,4 +1,6 @@
+import { env } from "process"
 import { prisma_client } from "../applications/database.js"
+import { kafka_producer } from "../applications/kafka.js"
 import redis_client from "../applications/redis.js"
 import { error_response } from "../utils/error.js"
 import { validate } from "../validations/index.js"
@@ -125,9 +127,42 @@ const update_user = async (req) => {
     return result
 }
 
+const post_kafka_user = async (req) => {
+    const user = validate(create_user_validation, req.body)
+
+    const count_user = await prisma_client.user.count({
+        where: {
+            OR: [
+                {
+                    username: user.username
+                },
+                {
+                    emailAddress: user.emailAddress
+                },
+                {
+                    identityNumber: user.indentityNumber
+                },
+                {
+                    accountNumber: user.accounNumber
+                }
+            ]
+
+        }
+    })
+
+    if (count_user >= 1) {
+        throw new error_response(400, 'duplicate data')
+    }
+
+    const response = await kafka_producer.produce(env.KAFKA_TOPIC, user)
+
+    return response
+}
+
 export default {
     post_user,
     drop_user,
     get_user,
-    update_user
+    update_user,
+    post_kafka_user
 }
