@@ -5,9 +5,11 @@ const get_token = async (req, res, next) => {
         const token = token_service.generate_token()
 
         res.status(200).send({
+            code: 200,
             data: {
                 token: token
-            }
+            },
+            message: "get token success"
         })
     } catch (error) {
         next(error)

@@ -2,30 +2,38 @@ version: "3.1"
 services:
   db_alfinfernandhapratama_betest:
     build: 
+      context: ./
       dockerfile: mongo.Dockerfile
     restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: yasfin
-      MONGO_INITDB_DATABASE: db_alfinfernandhapratama_betest
-      MONGO_REPLICA_HOST: localhost
-      MONGO_REPLICA_PORT: "27017"
+    env_file:
+      - .env
     ports:
       - 27017:27017
+    networks:
+      - mynetwork
 
   redis_alfinfernandhapratama_betest:
     image: redis:latest
     restart: always
+    env_file:
+      - .env
     ports:
       - "6380:6379"
-    environment:
-      - ALLOW_EMPTY_PASSWORD=yes
-      - REDIS_PORT=6379
-      - REDIS_DATABASES=1
+    networks:
+      - mynetwork
 
   ms-alfinfernandhapratamabetest:
     build: 
+      context: ./
       dockerfile: app.Dockerfile
     restart: always
+    env_file:
+      - .env
     ports:
       - 3000:3000
+    networks:
+      - mynetwork
+      
+networks:
+  mynetwork:
+    driver: bridge

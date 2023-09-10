@@ -1,5 +1,54 @@
 # [Jenius - Technical Test] Back End Developer - Alfin Fernandha
 
+## Public API SPEC
+
+### Get Token
+
+Endpoint : GET /api/token
+
+Response Body Success :
+
+```json
+{
+    "code": 200, 
+    "data" : {
+        "token": "eyJhbGciOiJIUzI1NiJ9.dGVzdA.jRGkdJjq1ItpcSlSKNQXHB5H3E8EmliKLZT_iXQQXD0"
+    },
+    "message": "get token success"
+}
+```
+
+Response Body Error :
+
+```json
+{
+    "code":500,
+    "message" : "something went wrong!"
+}
+```
+
+### Get Health Check
+
+Endpoint : GET /api/health
+
+Response Body Success :
+
+```json
+{
+    "code": 200, 
+    "message": "Redis, DB Connection OK. Health checks passed.'"
+}
+```
+
+Response Body Error :
+
+```json
+{
+    "code":500,
+    "message" : "Health checks failed: something went wrong!"
+}
+```
+
 ## User API SPEC
 
 ### Create User
@@ -25,13 +74,15 @@ Response Body Success :
 
 ```json
 {
+    "code": 200, 
     "data" : {
         "id": "64fd505f65c1be26e9cf56b2",
         "username" : "test",
         "emailAddress" : "test@mail.com",
         "accountNumber" : "12345678",
         "identityNumber" : "12345678"
-    }
+    },
+    "message": "create data success"
 }
 ```
 
@@ -39,19 +90,20 @@ Response Body Error :
 
 ```json
 {
-    "errors" : "username invalid"
+    "code":400,
+    "message" : "username invalid"
 }
 ```
 
-## Update User
+### Update User
 
-Endpoint : PATCH /api/users
+Endpoint : PUT /api/users/:id
 
 Headers :
 
 - Authorization : token
 
-Params :
+Path :
 
 - id : idUser
 
@@ -59,10 +111,7 @@ Request Body :
 
 ```json
 {
-    "username" : "test",
-    "emailAddress" : "test@mail.com",
-    "accountNumber" : "12345678",
-    "identityNumber" : "12345678"
+    "username" : "test_updated",
 }
 ```
 
@@ -70,37 +119,51 @@ Response Body Success :
 
 ```json
 {
+    "code": 200, 
     "data" : {
-        "name" : "alfin fernandha"
-    }
+        "id": "64fd505f65c1be26e9cf56b2",
+        "username" : "test_updated",
+        "emailAddress" : "test@mail.com",
+        "accountNumber" : "12345678",
+        "identityNumber" : "12345678"
+    },
+    "message": "update data success"
+
 }
 ```
 
 Response Body Error :
 
 ```json
-{
-    "data" : {},
-    "errors" : "name length max"
+{   
+    "code": 400,
+    "message" : "invalid user id"
 }
 ```
 
-## Get User API
+### Get User API
 
 Endpoint : GET /api/users
 
 Headers :
 
 - Authorization : token
+
+Query Param :
+
+- accountNumber : accountNumber
+- identityNumber : identityNumber
   
 Response Body Success :
 
 ```json
 {
+    "code": 200, 
     "data" : {
         "name" : "alfin fernandha",
         "username" : "raven"
-    }
+    },
+    "message": "get data success"
 }
 ```
 
@@ -108,26 +171,30 @@ Response Body Error :
 
 ```json
 {
-    "data" : {},
-    "errors" : "Unauthorized"
+    "code" : 404,
+    "message" : "user not found"
 }
 ```
 
-## Delete User
+### Delete User
 
-Endpoint : DELETE /api/users/logout
+Endpoint : DELETE /api/users/:id
 
 Headers :
 
 - Authorization : token
 
+Path :
+
+- id : idUser
+
 Response Body Success :
 
 ```json
 {
-    "data" : {
-        "logout" : "ok"
-    }
+    "code": 200, 
+    "message": "delete data success"
+   
 }
 ```
 
@@ -135,7 +202,7 @@ Response Body Error :
 
 ```json
 {
-    "data" : {},
-    "errors" : "Unauthorized"
+    "code" : 404,
+    "message" : "user not found"
 }
 ```
