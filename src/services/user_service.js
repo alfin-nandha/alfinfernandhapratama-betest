@@ -37,6 +37,7 @@ const post_user = async (req) => {
         data: user
     })
 
+    // set key-value to redis
     await redis_client.set_value_exp(`user_${result.accountNumber}`, JSON.stringify(result))
     await redis_client.set_value_exp(`user_${result.identityNumber}`, JSON.stringify(result))
 
@@ -62,6 +63,7 @@ const drop_user = async (req) => {
         }
     })
 
+    // delete key-value from redis
     await redis_client.del_value(`user_${result.identityNumber}`)
     await redis_client.del_value(`user_${result.accountNumber}`)
 }
@@ -90,6 +92,10 @@ const get_user = async (req) => {
         throw new error_response(404, 'user not found')
     }
 
+    // produce user data from mongodb to kafka
+    await kafka_producer.produce(env.KAFKA_TOPIC, db_result)
+
+    // set key-value to redis
     await redis_client.set_value_exp(`user_${db_result.accountNumber}`, JSON.stringify(db_result), { EX: 3600 })
     await redis_client.set_value_exp(`user_${db_result.identityNumber}`, JSON.stringify(db_result), { EX: 3600 })
 
@@ -121,48 +127,16 @@ const update_user = async (req) => {
         throw new error_response(404, 'user not found')
     }
 
+    // set key-value to redis
     await redis_client.set_value_exp(`user_${result.accountNumber}`, JSON.stringify(result), { EX: 3600 })
     await redis_client.set_value_exp(`user_${result.identityNumber}`, JSON.stringify(result), { EX: 3600 })
 
     return result
 }
 
-const post_kafka_user = async (req) => {
-    const user = validate(create_user_validation, req.body)
-
-    const count_user = await prisma_client.user.count({
-        where: {
-            OR: [
-                {
-                    username: user.username
-                },
-                {
-                    emailAddress: user.emailAddress
-                },
-                {
-                    identityNumber: user.indentityNumber
-                },
-                {
-                    accountNumber: user.accounNumber
-                }
-            ]
-
-        }
-    })
-
-    if (count_user >= 1) {
-        throw new error_response(400, 'duplicate data')
-    }
-
-    const response = await kafka_producer.produce(env.KAFKA_TOPIC, user)
-
-    return response
-}
-
 export default {
     post_user,
     drop_user,
     get_user,
-    update_user,
-    post_kafka_user
+    update_user
 }

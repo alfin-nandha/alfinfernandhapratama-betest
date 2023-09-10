@@ -1,5 +1,26 @@
 # [Jenius - Technical Test] Back End Developer - Alfin Fernandha
 
+## App
+
+### Base URL
+
+- <http://34.16.185.253:3000>
+  
+### Feature
+
+- Protected API with Authorization (JWT)
+- CRUD operation for User using MongoDB
+- Caching strategy using Redis
+- Produce user data from mongodb to Kafka
+
+### Tech-Stack
+
+- Nodejs
+- MongoDB
+- Redis
+- Kafka
+- Docker
+
 ## Public API SPEC
 
 ### Get Token
@@ -12,7 +33,8 @@ Response Body Success :
 {
     "code": 200, 
     "data" : {
-        "token": "eyJhbGciOiJIUzI1NiJ9.dGVzdA.jRGkdJjq1ItpcSlSKNQXHB5H3E8EmliKLZT_iXQQXD0"
+        "token": "eyJhbGciOiJIUzI1NiJ9.dGVzdA.jRGkdJjq1ItpcSlSKNQXHB5H3E8EmliKLZT_iXQQXD0",
+        "expiresIn": "3600s"
     },
     "message": "get token success"
 }
@@ -160,8 +182,11 @@ Response Body Success :
 {
     "code": 200, 
     "data" : {
-        "name" : "alfin fernandha",
-        "username" : "raven"
+        "id": "64fd505f65c1be26e9cf56b2",
+        "username" : "test",
+        "emailAddress" : "test@mail.com",
+        "accountNumber" : "12345678",
+        "identityNumber" : "12345678"
     },
     "message": "get data success"
 }
