@@ -17,7 +17,7 @@ jobs:
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
           script: |
-            cd alfinfernandhapratama-betest
+            cd jenius
             git pull origin main
             docker-compose down
             docker-compose up -d --build
