@@ -17,5 +17,5 @@ export const logger = winston.createLogger({
             maxSize: '1m'
         })
     ]
-})
+});
 

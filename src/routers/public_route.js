@@ -1,9 +1,9 @@
-import express from 'express'
-import token_controller from '../controllers/token_controller.js'
-import controllers from '../controllers/health_controller.js'
+import express from 'express';
+import token_controller from '../controllers/token_controller.js';
+import controllers from '../controllers/health_controller.js';
 
 
-export const public_router = express.Router()
+export const public_router = express.Router();
 
-public_router.get('/health', controllers.health_check)
-public_router.get('/token', token_controller.get_token)
+public_router.get('/health', controllers.health_check);
+public_router.get('/token', token_controller.get_token);

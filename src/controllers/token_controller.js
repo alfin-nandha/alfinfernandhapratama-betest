@@ -1,8 +1,8 @@
-import token_service from "../services/token_service.js"
+import token_service from "../services/token_service.js";
 
-const get_token = async (req, res, next) => {
+const get_token = (req, res, next) => {
     try {
-        const token = token_service.generate_token()
+        const token = token_service.generate_token();
 
         res.status(200).send({
             code: 200,
@@ -10,12 +10,12 @@ const get_token = async (req, res, next) => {
                 token: token
             },
             message: "get token success"
-        })
+        });
     } catch (error) {
-        next(error)
+        next(error);
     }
-}
+};
 
 export default {
     get_token
-}
+};

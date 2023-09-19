@@ -1,9 +1,9 @@
-import { logger } from "../applications/logging.js"
-import { get_uuid } from "../utils/common.js"
+import { logger } from "../applications/logging.js";
+import { get_uuid } from "../utils/common.js";
 
 
 const log_middleware = (req, res, next) => {
-    const log_id = get_uuid()
+    const log_id = get_uuid();
     logger.info({
         log_id: log_id,
         type: 'request',
@@ -12,9 +12,9 @@ const log_middleware = (req, res, next) => {
         params: req.params,
         body: req.body,
         header: req.headers
-    })
+    });
 
-    const old_send = res.send
+    const old_send = res.send;
     res.send = (body) => {
         logger.info({
             log_id: log_id,
@@ -22,15 +22,15 @@ const log_middleware = (req, res, next) => {
             url: req.originalUrl,
             status_code: res.status,
             body: body
-        })
+        });
 
-        res.send = old_send
-        return res.send(body)
-    }
+        res.send = old_send;
+        return res.send(body);
+    };
 
-    next()
-}
+    next();
+};
 
 export {
     log_middleware
-}
+};

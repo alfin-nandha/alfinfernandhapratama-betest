@@ -1,9 +1,9 @@
 export class error_response extends Error {
-    status
+    status;
 
     constructor(status, msg) {
-        super(msg)
-        this.status = status
+        super(msg);
+        this.status = status;
     }
 }
 

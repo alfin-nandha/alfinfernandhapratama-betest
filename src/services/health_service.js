@@ -1,5 +1,5 @@
-import { prisma_client } from "../applications/database.js"
-import { redis_client } from "../applications/redis.js"
+import { prisma_client } from "../applications/database.js";
+import { redis_client } from "../applications/redis.js";
 import { error_response } from "../utils/error.js";
 
 const connection_check = async () => {
@@ -18,8 +18,8 @@ const connection_check = async () => {
         await prisma_client.$disconnect();
         await redis_client.quit();
     }
-}
+};
 
 export {
     connection_check
-}
+};
